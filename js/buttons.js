@@ -1,10 +1,10 @@
 let dataArray;
+const divtemp = `<div style='background-color: #fff;' onmousedown='bgChange(this.style.backgroundColor)' class="box"></div>`;
 
 // -------------------------------------------------------------- SUBMIT
 function submit() {
 	let divList = '';
 	let data = txtareaCol[0].value;
-	let divtemp = `<div style='background-color: #fff;' onmousedown='bgChange(this.style.backgroundColor)' class="box"></div>`;
 
 	let prefix = /#/g;
 	dataArray = data.replace(prefix, '').split('\n');
@@ -39,4 +39,39 @@ function reset() {
 }
 
 // -------------------------------------------------------------- SORT
-// function sort() {}
+let sorted, colors;
+
+function rmDuplicates() {
+	let unique = {};
+	dataArray.forEach(function(i) {
+		if (!unique[i]) {
+			unique[i] = true;
+		}
+	});
+	return Object.keys(unique);
+}
+
+function sortAll() {
+	let divList = '';
+	let newList = '';
+	let data = txtareaCol[0].value;
+
+	let prefix = /#/g;
+	dataArray = data.replace(prefix, '').split('\n');
+
+	dataArray = rmDuplicates();
+	dataArray = dataArray.sort();
+
+	for (i = 0; i < dataArray.length; i++) {
+		let newLine = `#${dataArray[i]}\n`;
+		newList += newLine;
+	}
+	txtareaCol[0].value = newList;
+
+	for (i = 0; i < dataArray.length; i++) {
+		divList += divtemp;
+	}
+
+	colorContainer.innerHTML = divList;
+	setColors();
+}

@@ -1,4 +1,4 @@
-# color-clipmarks-v0.1
+# color-clipmarks-v0.2
 
 A simple and easy to use tool to help you manage and preview your color codes.
 
@@ -25,7 +25,6 @@ The color code will be displayed in the text box at the top of the page.
 
 - Code clean up
 - Critical CSS file
-- Color code sorting
 - Additional formats and conversion (RGB, Hexadecimal, HSL)
 - Local file storage and uploads
 - Ability to create, share, and export palettes
