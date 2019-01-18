@@ -1,4 +1,4 @@
-# color-clipmarks-v0.1
+# color-clipmarks-v0.2
 
 A simple and easy to use tool to help you manage and preview your color codes.
 
