@@ -75,3 +75,10 @@ function sortAll() {
 	colorContainer.innerHTML = divList;
 	setColors();
 }
+
+// -------------------------------------------------------------- CLEAR
+function clearAll() {
+	txtareaCol[0].value = '';
+	colorContainer.innerHTML = '';
+
+}
