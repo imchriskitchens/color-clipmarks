@@ -188,3 +188,12 @@ function bgColorMenu5(num) {
 	btns[el].style.background = '#ccc';
 }
 
+function noteStyle() {
+	noteSecHeader.style.color = '#444';
+	noteSecDiv.style.marginTop = '80px';
+	noteSecDiv.style.padding = '50px';
+	noteSecDiv.style.border = 'solid 1px #ccc';
+	noteSecDiv.style.borderRadius = '5px';
+	noteSecDiv.style.backgroundColor = '#fafafa';
+}
+noteStyle();
