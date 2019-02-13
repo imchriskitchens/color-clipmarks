@@ -1,70 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-		<style media="screen">
-			li {
-				font-size: 20px;
-				line-height: 1.6;
-			}
-		</style>
-	</head>
-	<body>
-		<div id="main">
-			<div class="menu">
-				<button type="button" disabled='true' onmouseover="bgColorMenu3(0)" onmouseout="bgColorMenu5(0);" onclick="displayMenu()">MENU</button>
-			</div>
-			<div class="title">
-				<h1 id='title'>color clipmarks</h1>
-			</div>
-			<div id="inputDiv">
-				<input id="inputBox" onclick="copyColor()">
-			</div>
-			<div id="colorContainer"></div>
-			<div class="">
-				<textarea name="name"></textarea>
-				<a href="#inputBox">
-					<button id="btnSubmit" onmouseover="bgColor3(1)" onmouseout="bgColor5(1)" onclick="submit()">submit</button>
-				</a>
-				<button type="button" id="btnSort" onmouseover="bgColor3(2)" onmouseout="bgColor5(2)" onclick='sortAll()'>sort</button>
-				<button id="btnConvAll" onmouseover="this.style.opacity = '1';" onmouseout="this.style.opacity = '0.9';" onclick="rgbAll()">hex to rgb</button>
-				<button id="" onmouseover="bgColor3(4)" onmouseout="bgColor5(4)" onclick="txtareaCol[0].select()">selectall</button>
-				<br>
-				<button id="" disabled='true'>paste</button>
-				<button id="" disabled='true'>cut</button>
-				<button id="btnReset" onmouseover="bgColor3(7)" onmouseout="bgColor5(7)" onclick="reset()">reset</button>
-				<button id="" onmouseover="bgColor3(8)" onmouseout="bgColor5(8)" onclick="clearAll()">clear</button>
-				<!-- ====================================================== NOTES -->
-				<div id="noteDiv">
-					<h1 id='notesHd'>NOTES:</h1>
-					<p class='notes'>
-						<ul>
-							<li>MENU | [DISABLED / HIDDEN]</li>
-							<br>
-							<li>submit - (Splits textarea value into array to create color divs)
-							</li>
-							<li>sort - (Sort textarea values and remove duplicates) | [HEX - COMPLETE] [RGB - IN BETA]
-							</li>
-							<li>hexToRGB - (Convert all textarea values to RGB) | [IN BETA]
-							</li>
-							<li>selectAll - (Quickly select all textarea values)
-							</li>
-							<br>
-							<li>reset - (Reset textarea values to default and auto-submit to generate color divs)
-							</li>
-							<li>clear - (Clear all values from textarea)
-							</li>
-						</ul>
-					</p>
-				</div>
-				<!-- =============================================================== -->
-			</div>
+<head>
+	<meta charset="utf-8">
+	<title>color clipmarks</title>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+	<div class="cclm">
+		<h1 id='cclm-title'>color clipmarks</h1>
+	</div>
+	<div id="main">
+		<div id="colorLabelDiv">
+			<input id="colorLabel" onclick="copyColor()" placeholder='#colorclipmarks'>
 		</div>
-		<script src="./js/styles.js" charset="utf-8"></script>
-		<script src="./js/bgChange.js" charset="utf-8"></script>
-		<script src="./js/buttons.js" charset="utf-8"></script>
-		<script src="./js/rgbAll.js" charset="utf-8"></script>
-		<script src="./js/newbuttons.js" charset="utf-8"></script>
-	</body>
+		<div>
+			<div id="colorContainer"></div>
+		</div>
+		<div>
+			<textarea maxlength="19000" id="userInput"></textarea>
+		</div>
+		<div class="">
+			<button id="btnSUBMIT" onclick="submit()">submit</button>
+			<button id="btnCLEAR" onclick="clearAll()">clear</button>
+			<button id="btnSELECT" onclick="userInput.select()">selectall</button>
+			<button id="btnSORT" onclick='sortAll()'>sort</button><br>
+			<button id="btnRGB" onclick="rgbMode()">RGB</button>
+			<button id="btnHEX" onclick="hexMode()" disabled='true'>HEX</button>
+			<button id="upperCase" name="false" onclick="toggleCase()">upperCase</button>
+		</div>
+	</div>
+	<script src="./js/styles.js" charset="utf-8"></script>
+	<script src="./js/colorSel.js" charset="utf-8"></script>
+	<script src="./js/buttons.js" charset="utf-8"></script>
+	<script src="./js/colorMode.js" charset="utf-8"></script>
+	<script src="./js/stateCtrl.js" charset="utf-8"></script>
+</body>
 </html>
