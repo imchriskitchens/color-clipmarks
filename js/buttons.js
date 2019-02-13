@@ -37,7 +37,6 @@ function setColors() {
 
 // -------------------------------------------------------------- TOGGLE_CASE
 function toggleCase() {
-    
     upperCase = (upperCase === true) ? false : true;
     if (upperCase === true) {
         upcase.style.borderColor = '#00bcd4';
@@ -64,6 +63,7 @@ function rmDuplicates() {
 }
 
 function sortAll() {
+    let prefix = /#/g;
     let data = userInput.value;
     dataArray = data.replace(prefix, '').split('\n');
     dataArray = rmDuplicates();
