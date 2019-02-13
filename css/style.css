@@ -1,0 +1,103 @@
+body {
+    font-family: Arial;
+    margin: 20px 10%;
+}
+
+#cclm-title {
+    font-size: 40px;
+    color: #444;
+}
+
+body, #colorLabelDiv, #colorLabel {
+    background-color: #1b1b1b;
+}
+
+#colorLabelDiv {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    width: 85vw;
+    padding: 20px 0;
+    border-bottom: solid 1px #222;
+}
+
+#colorLabel {
+    color: #ccc;
+    font-size: 20px;
+    margin: 10px 0 20px 0;
+    padding: 15px;
+    border-style: solid;
+    border-width: 10px 20px;
+    border-color: #333;
+    border-radius: 5px;
+}
+
+#userInput {
+    font-size: 18px;
+    height: 200px;
+    line-height: 1.6;
+    margin-top: 10%;
+    padding: 20px;
+    rows: 8;
+    clear: left;
+}
+
+#userInput, button {
+    color: #ccc;
+    background-color: #222;
+    border-color: #333;
+    border-style: solid;
+    border-width: 1px;
+    outline: none;
+    border-radius: 5px;
+}
+
+button {
+    font-size: 20px;
+    height: 50px;
+    margin: 50px 50px 20px 0;
+    width: 120px;
+}
+
+#btnHEX {
+    border-color: #00bcd4;
+}
+
+.box {
+    --size: 100px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 701px) {
+    #colorLabel {
+        width: 30vw;
+    }
+
+    #userInput {
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #colorLabel {
+        width: 68vw;
+    }
+
+    #userInput {
+        width: 70vw;
+    }
+
+    .box {
+        --size: 24vw;
+        width: var(--size);
+        height: var(--size);
+    }
+
+    button {
+        height: 70px;
+        margin: 20px;
+        width: 150px;
+    }
+}
