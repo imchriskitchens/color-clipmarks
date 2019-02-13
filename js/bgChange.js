@@ -1,7 +1,11 @@
+let upperCase = false;
+
 function bgChange(bg) {
 	let cval = rgbToHex(bg);
+	if (upperCase === true) {
+		cval = cval.toUpperCase();
+	}
 	inputBox.value = cval;
-	inputBox.style.textTransform = 'uppercase';
 	let tbBorder = 'solid 20px ' + inputBox.value;
 	let lrBorder = 'solid 30px ' + inputBox.value;
 	inputBox.style.borderTop = tbBorder;
