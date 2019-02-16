@@ -38,11 +38,10 @@ body, #colorLabelDiv, #colorLabel {
     line-height: 1.6;
     margin-top: 10%;
     padding: 20px;
-    rows: 8;
     clear: left;
 }
 
-#userInput, button {
+#userInput, #palette, button {
     color: #ccc;
     background-color: #222;
     border-color: #333;
@@ -72,11 +71,11 @@ button {
 
 @media screen and (min-width: 701px) {
     #colorLabel {
-        width: 30vw;
+        width: 25vw;
     }
 
     #userInput {
-        width: 70vw;
+        width: 50vw;
     }
 }
 
@@ -86,6 +85,7 @@ button {
     }
 
     #userInput {
+        margin-right: 0;
         width: 70vw;
     }
 
@@ -100,4 +100,23 @@ button {
         margin: 20px;
         width: 150px;
     }
+}
+
+.fa {
+    color: #555;
+    margin-bottom: 50px;
+}
+
+.fa:hover {
+    color: #ccc;
+}
+
+.btn-enabled {
+    color: #ccc;
+    background-color: #222;
+}
+
+.btn-disabled {
+    color: #666;
+    background-color: #1b1b1b;
 }
