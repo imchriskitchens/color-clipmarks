@@ -1,4 +1,5 @@
-let dataArray, cleared = false, upperCase = false;
+let dataArray, cleared = false,
+    upperCase = false;
 const template = `<div style='background-color: #fff;' onmousedown='colorSel(this.style.backgroundColor)' class="box"></div>`;
 
 // -------------------------------------------------------------- SUBMIT
@@ -103,7 +104,6 @@ function darkMode() {
     bod.style.backgroundColor = bkgdSet;
     colorLabelDiv.style.backgroundColor = bkgdSet;
 }
-
 
 // -------------------------------------------------------------- EXPORT
 function download(filename, text) {
