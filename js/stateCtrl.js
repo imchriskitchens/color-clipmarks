@@ -1,9 +1,9 @@
-const btnHex = document.getElementById('btnHEX');
-const btnRgb = document.getElementById('btnRGB');
-const btnSort = document.getElementById('btnSORT');
-const btnSubmit = document.getElementById('btnSUBMIT');
-const btnSelect = document.getElementById('btnSELECT');
-const btnClear = document.getElementById('btnCLEAR');
+const btnHex = document.getElementById('btnHEX'),
+    btnRgb = document.getElementById('btnRGB'),
+    btnSort = document.getElementById('btnSORT'),
+    btnSubmit = document.getElementById('btnSUBMIT'),
+    btnSelect = document.getElementById('btnSELECT'),
+    btnClear = document.getElementById('btnCLEAR');
 
 function hexModeSel() {
     btnRgb.disabled = false;
@@ -18,9 +18,9 @@ function hexModeSel() {
     btnSort.style.backgroundColor = `#222`;
     btnHex.style.backgroundColor = `#222`;
     upcase.style.backgroundColor = `#222`;
+    btnHex.style.borderColor = '#00bcd4';
     btnRgb.style.borderColor = '#333';
-    btnHex.style.color = `#ccc`;
-
+    btnHsl.innerHTML = 'HSL > HEX';
 }
 
 function rgbModeSel() {
@@ -38,6 +38,7 @@ function rgbModeSel() {
     btnRgb.style.borderColor = '#00bcd4';
     btnHex.style.borderColor = '#333';
     upcase.style.borderColor = '#333';
+    btnHsl.innerHTML = 'HSL > RGB';
 }
 
 function isClear() {
