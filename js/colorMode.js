@@ -4,22 +4,19 @@ function rgbMode() {
     rgbModeSel();
     let newList = '',
         newColorList = '',
-        thisNewColorRGB = '';
-    data = userInput.value;
+        data = userInput.value;
     let prefix = /#/g;
     let dataArray = data.replace(prefix, '').split('\n');
     for (i = 0; i < dataArray.length; i++) {
-        if (dataArray[i].charAt(0) !== 'r') {
-            newColorRGB = hexToRGB(dataArray[i]);
-            thisNewColorRGB = `rgb(${r}, ${g}, ${b})`;
-            newList += thisNewColorRGB + '\n';
-        } else {
-            let newline = (i < dataArray.length - 1) ? `\n` : ``;
-            newList += `#${dataArray[i]}${newline}`;
-        }
+        newColorRGB = hexToRGB(dataArray[i]);
+        let result = `rgb(${r}, ${g}, ${b})`;
+        newList = (i === 0) ? newList += result : newList += `\n${result}`;
     }
-    console.log(newList);
     userInput.value = newList;
+    let cLabel = colorLabel.value;
+    cLabel = hexToRGB(cLabel);
+    let cLabelNew = `rgb(${r}, ${g}, ${b})`;
+    colorLabel.value = cLabelNew;
 }
 
 function hexToRGB(hex) {
@@ -49,17 +46,30 @@ function hexToRGB(hex) {
 
 function hexMode() {
     hexModeSel();
-    let hexList = '';
+    let newList = '';
     let data = userInput.value;
     let dataArray = data.split('\n');
     for (i = 0; i < dataArray.length; i++) {
-        if (dataArray[i].charAt(0) === 'r') {
-            let result = rgbToHex(dataArray[i]);
-            let newline = (i > 10) ? '' : `\n`;
-            console.log(newline);
-            hexList += `${result}${newline}`;
-        }
+        let result = (dataArray[i].charAt(0) === 'r') ? rgbToHex(dataArray[i]) : '';
+        newList = (i === 0) ? newList += result : newList += `\n${result}`;
     }
-    console.log(hexList);
-    userInput.value = hexList;
+    userInput.value = newList;
+    colorLabel.value = rgbToHex(colorLabel.value);
+}
+
+function hslConvert() {
+    let data = userInput.value;
+    if (data.charAt(0) === 'h') {
+        submit();
+        let newList = '';
+        for (var i = 0; i < boxes.length; i++) {
+            let c = boxes[i].style.backgroundColor;
+            c = (btnHex.disabled === true) ? rgbToHex(c) : c;
+            newList += `${c}\n`;
+        }
+        userInput.value = newList;
+    }
+    else {
+        alert('Currently, the first value must be HSL format to convert values.');
+    }
 }
