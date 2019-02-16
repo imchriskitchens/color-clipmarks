@@ -5,7 +5,7 @@
 	<title>color clipmarks</title>
 	<link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
+<body onkeypress="keyd(event)">
 	<div class="cclm">
 		<h1 id='cclm-title'>color clipmarks</h1>
 	</div>
@@ -16,16 +16,17 @@
 		<div>
 			<div id="colorContainer"></div>
 		</div>
-		<div>
+		<div style="clear:left;">
 			<textarea maxlength="19000" id="userInput"></textarea>
 		</div>
-		<div class="">
+		<div>
 			<button id="btnSUBMIT" onclick="submit()">submit</button>
 			<button id="btnCLEAR" onclick="clearAll()">clear</button>
 			<button id="btnSELECT" onclick="userInput.select()">selectall</button>
 			<button id="btnSORT" onclick='sortAll()'>sort</button><br>
 			<button id="btnRGB" onclick="rgbMode()">RGB</button>
 			<button id="btnHEX" onclick="hexMode()" disabled='true'>HEX</button>
+			<button id="btnHSL" onclick="hslConvert()">HSL > HEX</button>
 			<button id="upperCase" name="false" onclick="toggleCase()">upperCase</button>
 			<button id="btnEXPORT">export</button>
 		</div>
