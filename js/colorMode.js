@@ -6,6 +6,7 @@ function rgbMode() {
         newColorList = '',
         thisNewColorRGB = '';
     data = userInput.value;
+    let prefix = /#/g;
     let dataArray = data.replace(prefix, '').split('\n');
     for (i = 0; i < dataArray.length; i++) {
         if (dataArray[i].charAt(0) !== 'r') {
