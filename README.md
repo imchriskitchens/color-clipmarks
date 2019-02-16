@@ -1,6 +1,6 @@
-# color-clipmarks-v0.3
+# color-clipmarks-v0.4
 
-A simple and easy to use tool to help you manage and preview your color codes.
+Color Clipmarks is a tool to help you quickly copy, paste, and preview a list of color codes in a single window. (supports Hex, RGB, and HSL formats)
 
 ## About
 
@@ -12,25 +12,27 @@ It's a work in progress, with much more to do in the future, but it's functional
 
 - find me on twitter - @imchriskitchens
 
-## How To Use
+## Features
 
-- Paste a list of color codes in the textarea at the bottom of the page and click submit.
-- This will create a clickable box preview for each color provided and display them in a single grid.
-- You can view the color code for each element by clicking the box preview.
-- The color code will be displayed in the text box at the top of the page. (click to copy color code)
-- Convert between Hexadecimal and RGB formats
+* Hex Mode 
+ - Converts all values to Hexadecimal
+ - Toggle UpperCase and LowerCase values
+ - Sort and remove duplicate values
+ 
+ 
+* RGB Mode
+ - Converts all values to RGB
 
-**Hex-Mode Only**
 
-- Toogle UpperCase and LowerCase
-- Sort and remove duplicates
+* HSL (Limited) 
+ - Still early stage with a few bugs to work out, but currently offers the ability to convert HSL to (Hex or RGB)
 
 
 ## To Do 
 
 - Code clean up
 - Additional support for HSL format
-- Local file storage
 - Import and export (*.txt*, *.json*, *.css*)
+- Local file storage
 - Create, share, and export palettes
 - Prototyping template previews
