@@ -4,6 +4,7 @@ const template = `<div style='background-color: #fff;' onmousedown='colorSel(thi
 
 // -------------------------------------------------------------- SUBMIT
 function submit() {
+    topFunction()
     let newList = '';
     let data = userInput.value;
     if (data !== '') {
@@ -74,7 +75,7 @@ function sortAll() {
         divList = '';
 
     for (i = 0; i < qty; i++) {
-        newList += `#${dataArray[i]}\n`;
+        newList = (i === 0) ? newList += `#${dataArray[i]}` : newList += `\n#${dataArray[i]}`;
         divList += template;
     }
     userInput.value = newList;
@@ -91,7 +92,6 @@ function clearAll() {
     colorLabel.value = '';
     colorLabel.style.borderColor = '#333';
 }
-
 
 // -------------------------------------------------------------- DARK MODE
 function darkMode() {
@@ -120,3 +120,21 @@ document.getElementById("btnEXPORT").addEventListener("click", function() {
     let filename = "colors.txt";
     download(filename, text);
 }, false);
+
+// -------------------------------------------------------------- SCROLL
+// window.onscroll = function() {
+//     scrollFunction()
+// };
+// 
+// function scrollFunction() {
+//     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+//         document.getElementById("btnScroll").style.display = "block";
+//     } else {
+//         document.getElementById("btnScroll").style.display = "none";
+//     }
+// }
+
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
