@@ -14,17 +14,17 @@ It's a work in progress, with much more to do in the future, but it's functional
 
 ## Features
 
-* Hex Mode 
+*Hex Mode*
  - Converts all values to Hexadecimal
  - Toggle UpperCase and LowerCase values
  - Sort and remove duplicate values
  
  
-* RGB Mode
+*RGB Mode*
  - Converts all values to RGB
 
 
-* HSL (Limited) 
+*HSL (Limited)* 
  - Still early stage with a few bugs to work out, but currently offers the ability to convert HSL to (Hex or RGB)
 
 
