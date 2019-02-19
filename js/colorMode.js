@@ -65,7 +65,7 @@ function hslConvert() {
         for (var i = 0; i < boxes.length; i++) {
             let c = boxes[i].style.backgroundColor;
             c = (btnHex.disabled === true) ? rgbToHex(c) : c;
-            newList += `${c}\n`;
+            newList = (i === 0) ? newList += `${c}` : newList += `\n${c}`;
         }
         userInput.value = newList;
     }
