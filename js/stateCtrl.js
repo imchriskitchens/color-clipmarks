@@ -38,13 +38,23 @@ function toggleHighlight() {
             btnHsl.classList.toggle("btn-disabled");
             btnSort.classList.toggle("btn-disabled");
             upcase.classList.toggle("btn-disabled");
+            btnHsl.disabled = true;
+            btnSort.disabled = false;
+            upcase.disabled = false;
             break;
         case 'rgb':
             btnRgb.classList.toggle("btn-highlight");
+            btnHex.disabled = false;
+            btnHsl.disabled = false;
+            btnSort.disabled = true;
+            upcase.disabled = true;
             break;
         case 'hsl':
             btnHsl.classList.toggle("btn-highlight");
             btnHex.classList.toggle("btn-disabled");
+            btnHex.disabled = true;
+            btnSort.disabled = true;
+            upcase.disabled = true;
             break;
     }
 }
