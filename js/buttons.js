@@ -1,15 +1,15 @@
-let dataArray, cleared = false,
-    upperCase = false;
+let dataArray, upperCase = false,
+    colorMode = 'hex';
 const template = `<div style='background-color: #fff;' onmousedown='colorSel(this.style.backgroundColor)' class="box"></div>`;
 
 // -------------------------------------------------------------- SUBMIT
 function submit() {
-    topFunction()
+    topFunction();
     let newList = '';
     let data = userInput.value;
     if (data !== '') {
-        // AVOID MODE SELECTION CONFLICT BEFORE FIRST CLEAR
-        if (cleared === true) {
+        // // AVOID MODE SELECTION CONFLICT BEFORE FIRST CLEAR
+        if (btnClear.disabled === true) {
             notCleared();
         }
         dataArray = data.split('\n');
@@ -28,26 +28,21 @@ function submit() {
 // -------------------------------------------------------------- SET_COLORS
 function setColors() {
     for (i = 0; i < dataArray.length; i++) {
-        boxes[i].style.color = '#fff';
         boxes[i].style.backgroundColor = dataArray[i];
-        boxes[i].style.margin = '5px';
-        boxes[i].style.float = 'left';
-        boxes[i].style.borderRadius = '5px';
-        boxes[i].style.textAlign = 'center';
     }
 }
 
 // -------------------------------------------------------------- TOGGLE_CASE
 function toggleCase() {
-    upperCase = (upperCase === true) ? false : true;
-    if (upperCase === true) {
-        upcase.style.borderColor = '#00bcd4';
-        userInput.value = userInput.value.toUpperCase();
-        colorLabel.value = colorLabel.value.toUpperCase();
-    } else {
-        upcase.style.borderColor = '#333';
-        userInput.value = userInput.value.toLowerCase();
-        colorLabel.value = colorLabel.value.toLowerCase();
+    if (userInput.value !== '' && colorMode === 'hex') {
+        upperCase = (upperCase === true) ? false : true;
+        if (upperCase === true) {
+            userInput.value = userInput.value.toUpperCase();
+            colorLabel.value = colorLabel.value.toUpperCase();
+        } else {
+            userInput.value = userInput.value.toLowerCase();
+            colorLabel.value = colorLabel.value.toLowerCase();
+        }
     }
 }
 
@@ -65,28 +60,33 @@ function rmDuplicates() {
 }
 
 function sortAll() {
-    let prefix = /#/g;
-    let data = userInput.value;
-    dataArray = data.replace(prefix, '').split('\n');
-    dataArray = rmDuplicates();
-    dataArray = dataArray.sort();
-    let qty = dataArray.length;
-    let newList = '',
-        divList = '';
-
-    for (i = 0; i < qty; i++) {
-        newList = (i === 0) ? newList += `#${dataArray[i]}` : newList += `\n#${dataArray[i]}`;
-        divList += template;
+    if (colorMode === 'hex' && userInput.value !== '') {
+        let prefix = /#/g;
+        let data = userInput.value;
+        dataArray = data.replace(prefix, '').split('\n');
+        dataArray = rmDuplicates();
+        dataArray = dataArray.sort();
+        let qty = dataArray.length;
+        let newList = '',
+            divList = '';
+        for (i = 0; i < qty; i++) {
+            newList = (i === 0) ? newList += `#${dataArray[i]}` : newList += `\n#${dataArray[i]}`;
+            divList += template;
+        }
+        userInput.value = newList;
+        colorContainer.innerHTML = divList;
+        colorLabel.value = '';
+        submit();
     }
-    userInput.value = newList;
-    colorContainer.innerHTML = divList;
-    submit();
+    else {
+        let msg = (colorMode !== 'hex') ? "Sort is only available for hex values" : "Failed to sort list values!";
+        alert(msg);
+    }
 }
 
 // -------------------------------------------------------------- CLEAR
 function clearAll() {
     isClear();
-    cleared = true;
     userInput.value = '';
     colorContainer.innerHTML = '';
     colorLabel.value = '';
@@ -99,8 +99,6 @@ function darkMode() {
     curr = rgbToHex(curr);
     let isDark = (curr === '#1b1b1b') ? 'enabled' : 'disabled';
     let bkgdSet = (isDark === 'enabled') ? '#333' : '#1b1b1b';
-
-    // bod.classList.toggle("mystyle");
     bod.style.backgroundColor = bkgdSet;
     colorLabelDiv.style.backgroundColor = bkgdSet;
 }
@@ -116,9 +114,14 @@ function download(filename, text) {
     document.body.removeChild(element);
 }
 document.getElementById("btnEXPORT").addEventListener("click", function() {
-    let text = document.getElementById("userInput").value;
-    let filename = "colors.txt";
-    download(filename, text);
+    if (userInput.value !== '') {
+        let text = document.getElementById("userInput").value;
+        let filename = "colors.txt";
+        download(filename, text);
+    }
+    else {
+        alert('No values!');
+    }
 }, false);
 
 // -------------------------------------------------------------- SCROLL

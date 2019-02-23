@@ -1,8 +1,9 @@
 function colorSel(bg) {
-    let cval = (btnHEX.disabled === true) ? rgbToHex(bg) : bg;
-    cval = (upperCase === true) ? cval.toUpperCase() : cval;
-    colorLabel.value = cval;
-    colorLabel.style.borderColor = cval;
+    let cval = (colorMode !== 'hex') ? bg : rgbToHex(bg);
+    let cval2 = (colorMode !== 'hsl') ? cval : rgbToHsl(cval);
+    cval2 = (upperCase === true) ? cval.toUpperCase() : cval2;
+    colorLabel.value = cval2;
+    colorLabel.style.borderColor = cval2;
 }
 
 function rgbToHex(rgbVal) {
