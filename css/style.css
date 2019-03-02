@@ -1,5 +1,7 @@
 :root {
     --accent: #00ffac90;
+    --glow: rgba(0, 255, 172, 0.05);
+    /* --glow: #00ffac10; */
 }
 
 body {
@@ -228,6 +230,7 @@ button {
     z-index: 0;
     top: 0;
     background-color: #111;
+    /* box-shadow: 10px 2px 15px var(--glow); */
 }
 
 .sideborder_1 {
