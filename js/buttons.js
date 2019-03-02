@@ -141,3 +141,23 @@ function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+
+function toggleSticky() {
+    footer.classList.toggle("sticky-footer");
+    footer.classList.toggle("not-sticky");
+    btnFooter.classList.toggle("btn-disabled");
+}
+
+function toggleNav() {
+    bod.classList.toggle('bodyMargin');
+    sb.classList.toggle('sideborder_1');
+    sb.classList.toggle('sideborder_2');
+    cir.classList.toggle('circletab_1');
+    cir.classList.toggle('circletab_2');
+    main.classList.toggle('margin-toggle');
+    title.classList.toggle('margin-toggle');
+    colorLabelDiv.classList.toggle('addTop');
+    colorLabelDiv.classList.toggle('initTop');
+    sidebar.classList.toggle('sidebar-enabled');
+    sidebar.classList.toggle('sidebar-disabled');
+}
