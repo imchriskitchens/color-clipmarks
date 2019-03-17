@@ -18,7 +18,7 @@ function rgbMode() {
 
             let cLabel = hexToRGB(colorLabel.value),
                 cLabelNew = `rgb(${r}, ${g}, ${b})`;
-            colorLabel.value = cLabelNew;
+            colorLabel.value = '';
         }
         else {
             let data = userInput.value;
@@ -75,7 +75,7 @@ function hexMode() {
             newList = (i === 0) ? newList += result : newList += `\n${result}`;
         }
         userInput.value = newList;
-        colorLabel.value = rgbToHex(colorLabel.value);
+        colorLabel.value = '';
         cMode('hex');
     }
 }
@@ -108,26 +108,25 @@ function hslMode() {
             newList = (i === 0) ? newList += result : newList += `\n${result}`;
         }
         userInput.value = newList;
-        colorLabel.value = rgbToHsl(colorLabel.value);
+        colorLabel.value = '';
         cMode('hsl');
     }
 }
 
-function rgbToHsl(c) {
-    let data = c;
-    let val = data.replace('rgb(', '').replace(')', '').split(',');
-    let r = val[0],
-        g = val[1],
-        b = val[2];
-    r /= 255, g /= 255, b /= 255;
-    let max = Math.max(r, g, b),
-        min = Math.min(r, g, b);
-    let h, s, l = (max + min) / 2;
-    if (max == min) {
-        h = s = 0;
-    } else {
-        let c = max - min;
-        s = (l > 0.5) ? c / (2 - max - min) : c / (max + min);
+function rgbToHSL(val) {
+    if (val.charAt(0) == 'r') {
+        val = val.replace('rgb(', '').replace(')', '').split(',');
+        let r = val[0],
+            g = val[1],
+            b = val[2];
+        r /= 255, g /= 255, b /= 255;
+        let max = Math.max(r, g, b),
+            min = Math.min(r, g, b),
+            c = max - min;
+        let h = 0,
+            s = 0,
+            l = (max + min) / 2;
+
         switch (max) {
             case r:
                 h = ((g - b) / c) % 6;
@@ -139,11 +138,13 @@ function rgbToHsl(c) {
                 h = ((r - g) / c) + 4;
                 break;
         }
-        h *= 60;
+        h = Math.round(h * 60);
+        h = (h < 0) ? h + 360 : h;
+        s = (c === 0) ? 0 : c / (1 - Math.abs(2 * l - 1));
+
+        s *= 100;
+        l *= 100;
+        let result = `hsl(${h.toFixed(0)}, ${s.toFixed(0)}%, ${l.toFixed(0)}%)`;
+        return result;
     }
-    s *= 100;
-    l *= 100;
-    let result = `hsl(${h.toFixed(0)}, ${s.toFixed(0)}%, ${l.toFixed(0)}%)`;
-    // console.log(result);
-    return result;
 }
