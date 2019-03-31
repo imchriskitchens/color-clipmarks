@@ -1,0 +1,161 @@
+.sidebar {
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+}
+
+#sideBorder {
+    height: 100vh;
+    width: 20px;
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    background-color: #111;
+}
+
+#circleTab {
+    position: fixed;
+    --size: 50px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    font-size: 16px;
+    background-color: #111;
+    color: #f1f1f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    top: 40vh;
+    z-index: 0;
+    cursor: pointer;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    margin: 10px 50px;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+@media screen and (min-width: 701px) {
+    .sidebar {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 700px) {
+    .sidebar {
+        padding-top: 0;
+        padding-bottom: 0;
+        width: 100%;
+        height: auto;
+        z-index: 9;
+    }
+
+    .sidebar .btn {
+        float: left;
+    }
+
+    #sideBorder {
+        height: 20px;
+        width: 100vw;
+        z-index: 9;
+    }
+
+    #circleTab {
+        padding: 10px;
+        top: -15px;
+    }
+}
+
+[bdmar2] {
+    margin-left: 5%;
+}
+
+[tgl1] {
+    left: 0;
+}
+
+[sdbr2] {
+    left: 110px;
+}
+
+[tgl2] {
+    left: -20px;
+}
+
+[cir2] {
+    left: 90px;
+}
+
+[tgl3] {
+    width: 0;
+}
+
+[sd2] {
+    width: 120px;
+}
+
+[mar2] {
+    /* margin: 20px 15%; */
+}
+
+[tgl5] {
+    top: 0;
+}
+
+[top2] {
+    top: 70px;
+}
+@media screen and (max-width: 700px) {
+    [bdmar2] {
+        margin: 0;
+    }
+
+    [tgl1] {
+        left: 0;
+    }
+
+    [sdbr2] {
+        left: 0;
+    }
+
+    [tgl2] {
+        left: 0;
+    }
+
+    [cir2] {
+        left: 90px;
+    }
+
+    [sd2] {
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+        width: 100%;
+    }
+
+    [mar2] {
+        margin: 20px 10%;
+    }
+
+    [top2] {
+        top: 70px;
+    }
+}
+@media screen and (min-width: 701px) {
+    [top2] {
+        top: 0;
+    }
+}
