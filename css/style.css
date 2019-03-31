@@ -1,7 +1,6 @@
 :root {
     --accent: #00ffac90;
     --glow: rgba(0, 255, 172, 0.05);
-    /* --glow: #00ffac10; */
 }
 
 body {
@@ -11,10 +10,12 @@ body {
 #cclm-title {
     font-size: 40px;
     color: #333;
-    margin: 50px 10% 20px 10%;
+    margin: 50px 10%;
 }
 
-body, #colorLabelDiv, #colorLabel {
+#colorLabel,
+#colorLabelDiv,
+body {
     background-color: #1b1b1b;
 }
 
@@ -26,14 +27,10 @@ body, #colorLabelDiv, #colorLabel {
     border-bottom: solid 1px #222;
 }
 
-.initTop {
-    top: 0;
-}
-
 #colorLabel {
     color: #ccc;
     font-size: 20px;
-    margin: 10px 0 20px 0;
+    margin: 10px 0 20px;
     padding: 15px;
     border-style: solid;
     border-width: 10px 20px;
@@ -51,7 +48,8 @@ body, #colorLabelDiv, #colorLabel {
     border-radius: 10px;
 }
 
-#userInput, button {
+#userInput,
+button {
     color: #ccc;
     background-color: #222;
     border-color: #333;
@@ -68,11 +66,12 @@ button {
 }
 
 .box {
-    --size: 120px;
-    width: var(--size);
-    height: var(--size);
+    --sizew: 240px;
+    --sizeh: 150px;
+    width: var(--sizew);
+    height: var(--sizeh);
     border-radius: 5px;
-    margin: 5px;
+    margin: 10px;
     float: left;
     border-radius: 5px;
 }
@@ -97,13 +96,21 @@ button {
     border-color: var(--accent);
 }
 
-#btnSHARE:hover, #btnPALETTE:hover, #btnTOP:hover, #btnEXPORT:hover, #btnFTR:hover, .material-icons:hover, #btnSELECT:hover, #btnCLEAR:hover, #btnSUBMIT:hover {
+#btnCLEAR:hover,
+#btnEXPORT:hover,
+#btnFTR:hover,
+#btnPALETTE:hover,
+#btnSELECT:hover,
+#btnSHARE:hover,
+#btnSUBMIT:hover,
+#btnTOP:hover,
+.material-icons:hover {
     color: var(--accent);
     border-color: var(--accent);
 }
-
 /* IF BTN IS NOT DISABLED */
-#btnSORT:hover, #upperCase:hover {
+#btnSORT:hover,
+#upperCase:hover {
     color: var(--accent);
     border-color: var(--accent);
 }
@@ -150,6 +157,33 @@ button {
     background: #333;
 }
 
+#main {
+    font-size: 20px;
+    transition: margin-left 0.5s;
+    margin: 0 5% 0 10%;
+}
+
+.hide {
+    display: none;
+}
+
+.btn {
+    font-size: 24px;
+    color: #818181;
+    background: #222;
+    padding: 8px 16px;
+    margin: 20px;
+    border: solid 1px #333;
+    border-radius: 5px;
+    display: block;
+    text-decoration: none;
+    transition: 0.3s;
+    width: 80px;
+}
+
+.btn:hover {
+    color: #f1f1f1;
+}
 @media screen and (min-width: 701px) {
     body {
         margin-bottom: 150px;
@@ -157,10 +191,6 @@ button {
 
     #colorLabel {
         width: 50vw;
-    }
-
-    .addTop {
-        top: 0;
     }
 
     #userInput {
@@ -193,7 +223,7 @@ button {
 
     .footer button {
         font-size: 16px;
-        margin: 10px 50px 10px 0px;
+        margin: 10px 50px 10px 0;
         float: left;
     }
 
@@ -210,143 +240,9 @@ button {
         width: 80px;
     }
 }
-
-.sidebar {
-    height: 100vh;
-    width: 0;
-    position: fixed;
-    z-index: 0;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-}
-
-#sideBorder {
-    height: 100vh;
-    width: 20px;
-    position: fixed;
-    z-index: 0;
-    top: 0;
-    background-color: #111;
-    /* box-shadow: 10px 2px 15px var(--glow); */
-}
-
-.sideborder_1 {
-    left: 0px;
-}
-
-.sideborder_2 {
-    left: 110px;
-}
-
-#circleTab {
-    position: fixed;
-    --size: 50px;
-    width: var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    font-size: 16px;
-    background-color: #111;
-    color: #f1f1f2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 10px 10px 10px;
-    top: 40vh;
-    z-index: 0;
-    cursor: pointer;
-}
-
-.circletab_1 {
-    left: -20px;
-}
-
-.circletab_2 {
-    left: 90px;
-}
-
-#main {
-    font-size: 20px;
-    transition: margin-left .5s;
-    margin: 0px 10%;
-}
-
-.hide {
-    display: none;
-}
-
-.btn {
-    font-size: 24px;
-    color: #818181;
-    background: #222;
-    padding: 8px 16px;
-    margin: 20px;
-    border: solid 1px #333;
-    border-radius: 5px;
-    display: block;
-    text-decoration: none;
-    transition: 0.3s;
-    width: 80px;
-}
-
-.btn:hover {
-    color: #f1f1f1;
-}
-
-.sidebar .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-    padding: 8px;
-    text-decoration: none;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.openbtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #111;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    margin: 10px 50px;
-}
-
-.openbtn:hover {
-    background-color: #444;
-}
-
-.sidebar-enabled {
-    width: 120px;
-}
-
-.sidebar-disabled {
-    display: none;
-}
-
-.margin-toggle {
-    margin: 20px 15%;
-}
-
-.bodyMargin {
-    margin: 20px 15%;
-}
-
-@media screen and (min-width: 701px) {
-    .sidebar .closebtn {
-        display: none;
-    }
-}
-
 @media screen and (max-width: 700px) {
     #cclm-title {
-        margin: 50px 15% 20px 15%;
+        margin: 50px 15% 20px;
     }
 
     #colorLabel {
@@ -358,12 +254,6 @@ button {
         width: 70vw;
     }
 
-    .box {
-        --size: 72px;
-        width: var(--size);
-        height: var(--size);
-    }
-
     #btnFTR {
         display: none;
     }
@@ -372,75 +262,72 @@ button {
         margin: 50px 20px 20px 0;
     }
 
-    #main, .footer {
-        margin: 0px 10%;
-    }
-
-    .addTop {
-        top: 70px;
-    }
-
-    .initTop {
-        top: 0;
-    }
-
-    .sidebar {
-        padding-top: 0px;
-        padding-bottom: 0px;
-        width: 100%;
-        height: auto;
-        position: relative;
-        z-index: 9;
-    }
-
-    .sidebar .btn {
-        float: left;
-    }
-
-    .sidebar-enabled {
-        position: sticky;
-        position: -webkit-sticky;
-        top: 0;
-    }
-
-    .margin-toggle {
-        margin: 20px 10%;
-    }
-
-    .bodyMargin {
-        margin: 0;
-    }
-
-    #sideBorder {
-        height: 20px;
-        width: 100vw;
-        z-index: 9;
-    }
-
-    .sideborder_1 {
-        left: 0px;
-    }
-
-    .sideborder_2 {
-        left: 0px;
-    }
-
-    #circleTab {
-        padding: 10px;
-        top: -15px;
-    }
-
-    .circletab_1 {
-        left: 0px;
-    }
-
-    .circletab_2 {
-        left: 90px;
+    #main,
+    .footer {
+        margin: 0 5% 0 10%;
     }
 }
-
 @media screen and (min-width: 600px) {
     button {
         margin: 50px 50px 20px 0;
+    }
+}
+
+.cinfo {
+    font-size: 22px;
+    font-family: Arial;
+    /* text-transform: uppercase;*/
+    text-align: center;
+    background: #05050590;
+    color: white;
+    padding: 10px 0;
+    position: relative;
+    top: calc(150px - 65px);
+}
+
+[data-hide] {
+    display: none !important;
+}
+
+[data-uppercase] {
+    text-transform: uppercase;
+}
+
+[toggle-mode] {
+    color: #ccc;
+    background-color: #222;
+}
+
+[highlight],
+[mode-active] {
+    border-color: var(--accent);
+}
+@media screen and (min-width: 701px) {
+    .sticky-footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 0 50px;
+    }
+
+    .not-sticky {
+        margin-top: 100px;
+        border-radius: 10px;
+        padding: 0 20px;
+    }
+
+    [sticky-toggle] {
+        margin-top: 100px;
+        border-radius: 10px;
+        padding: 0 20px;
+    }
+
+    [sticky-active] {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 0 50px;
     }
 }
