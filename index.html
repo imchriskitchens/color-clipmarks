@@ -1,60 +1,62 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>color clipmarks</title>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-	<div id="sideBorder" class="sideborder_1">
-		<div id="circleTab" class="circletab_1" onclick="toggleNav()">
-			<h3>&#9776;</h3>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>color clipmarks</title>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="./css/style.css">
+		<link rel="stylesheet" href="./css/sidebar.css">
+	</head>
+	<body tgl0>
+		<a href="#top"></a>
+		<div id="sideBorder" class="" tgl1>
+			<div id="circleTab" onclick="toggleNav()" tgl2>
+				<h3>&#9776;</h3>
+			</div>
 		</div>
-	</div>
-	<div id="mySidebar" class="sidebar sidebar-disabled" onmouseup="toggleNav()">
-		<div class="btns">
-			<a href="javascript:void(0)" id="clsb" class="closebtn" onclick="closeNav()">&times;</a>
-			<button class="btn" id="btnSORT" onclick='sortAll()'><i class="material-icons md-24">sort_by_alpha</i></button>
-			<button class="btn" id="upperCase" name="false" onclick="toggleCase()"><i class="material-icons md-24">text_format</i></button>
-			<!-- <button class="btn" id="btnPALETTE" name="button"><i class="material-icons md-24"> palette </i></button> -->
-			<!-- <button class="btn" id="btnSHARE" name="button"><i class="material-icons md-24">share</i></button> -->
-			<button id="btnEXPORT" class="btn"><i class="material-icons md-24">save_alt</i></button>
-			<button id="btnFTR" class="btn btn-disabled" onclick="toggleSticky()">FTR</button>
+		<div id="mySidebar" class="sidebar sidebar-disabled" onmouseup="toggleNav()" tgl3>
+			<div class="btns">
+				<!-- <button id="btnSORT" class="btn" onclick='sortAll()'><i class="material-icons md-24">sort_by_alpha</i></button> -->
+				<button id="upperCase" class="btn" onclick="toggleCase()" case-toggle><i class="material-icons md-24">text_format</i></button>
+				<button id="btnEXPORT" class="btn"><i class="material-icons md-24">save_alt</i></button>
+				<!-- <button id="btnFTR" class="btn" onclick="toggleSticky()" sticky-toggle>FTR</button> -->
+			</div>
 		</div>
-	</div>
-	<div class="cclm">
-		<h1 id='cclm-title'>color clipmarks</h1>
-	</div>
-	<div id="main">
-		<div id="colorLabelDiv" class="initTop">
-			<input id="colorLabel" onclick="copyColor()" placeholder='#colorclipmarks'>
+		<div class="cclm">
+			<h1 id='cclm-title' tgl4>color clipmarks</h1>
 		</div>
-		<div>
-			<div id="colorContainer"></div>
+		<template id="template">
+			<div class="box" onmousedown='alert(mode2(this.id))'>
+				<p class="cinfo hex" case-toggle></p>
+				<p class="cinfo rgb" data-hide="true"></p>
+				<p class="cinfo hsl" data-hide="true"></p>
+			</div>
+		</template>
+		<div id="main" tgl4>
+			<div>
+				<div id="colorContainer"></div>
+			</div>
+			<div style="clear:left;">
+				<textarea id="userInput" maxlength="19999"></textarea>
+			</div>
+			<div>
+				<button id="btnSUBMIT" onclick="submit()">submit</button>
+				<button id="btnCLEAR" onclick="clearAll()">clear</button>
+				<button id="btnSELECT" onclick="userInput.select()">selectall</button>
+			</div>
 		</div>
-		<div style="clear:left;">
-			<textarea maxlength="19999" id="userInput"></textarea>
+		<div id="FTR" class="footer sticky-footer" sticky-toggle sticky-active="true">
+			<button id="btnHEX" onclick="hexMode()" mode-toggle mode-active="true">HEX</button>
+			<button id="btnRGB" onclick="rgbMode()" mode-toggle>RGB</button>
+			<button id="btnHSL" onclick="hslMode()" mode-toggle>HSL</button>
+			<div class='footer-right'>
+				<a href="#top"><button id="btnTOP">TOP</button></a>
+			</div>
 		</div>
-		<div>
-			<button id="btnSUBMIT" onclick="submit()">submit</button>
-			<button id="btnCLEAR" onclick="clearAll()">clear</button>
-			<button id="btnSELECT" onclick="userInput.select()">selectall</button>
-		</div>
-	</div>
-	<div id="FTR" class="footer sticky-footer">
-		<button id="btnHEX" class="btn-highlight" onclick="hexMode()">HEX</button>
-		<button id="btnRGB" onclick="rgbMode()">RGB</button>
-		<button id="btnHSL" class="btn-disabled" onclick="hslMode()" disabled="true">HSL</button>
-		<div class='footer-right'>
-			<button id="btnTOP" onclick="topFunction()">TOP</button>
-		</div>
-	</div>
-	<script src="./js/styles.js" charset="utf-8"></script>
-	<script src="./js/colorSel.js" charset="utf-8"></script>
-	<script src="./js/buttons.js" charset="utf-8"></script>
-	<script src="./js/colorMode.js" charset="utf-8"></script>
-	<script src="./js/stateCtrl.js" charset="utf-8"></script>
-</body>
+		<script src="./js/submit.js" charset="utf-8"></script>
+		<script src="./js/styles.js" charset="utf-8"></script>
+		<script src="./js/colorMode.js" charset="utf-8"></script>
+		<script src="./js/buttons.js" charset="utf-8"></script>
+	</body>
 </html>
