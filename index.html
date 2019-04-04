@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="./css/sidebar.css">
 	</head>
 	<body tgl0>
-		<a href="#top"></a>
+		<div id="top"></div>
 		<div id="sideBorder" class="" tgl1>
 			<div id="circleTab" onclick="toggleNav()" tgl2>
 				<h3>&#9776;</h3>
@@ -46,12 +46,14 @@
 				<button id="btnSELECT" onclick="userInput.select()">selectall</button>
 			</div>
 		</div>
+		<div id="bottom"></div>
 		<div id="FTR" class="footer sticky-footer" sticky-toggle sticky-active="true">
 			<button id="btnHEX" onclick="hexMode()" mode-toggle mode-active="true">HEX</button>
 			<button id="btnRGB" onclick="rgbMode()" mode-toggle>RGB</button>
 			<button id="btnHSL" onclick="hslMode()" mode-toggle>HSL</button>
 			<div class='footer-right'>
 				<a href="#top"><button id="btnTOP">TOP</button></a>
+				<a href="#bottom"><button id="btnBOTTOM">BOTTOM</button></a>
 			</div>
 		</div>
 		<script src="./js/submit.js" charset="utf-8"></script>
