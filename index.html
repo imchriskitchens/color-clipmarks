@@ -27,7 +27,7 @@
 			<h1 id='cclm-title' tgl4>color clipmarks</h1>
 		</div>
 		<template id="template">
-			<div class="box" onmousedown='alert(mode2(this.id))'>
+			<div class="box" onmousedown='colorSel(mode2(this.id))'>
 				<p class="cinfo hex" case-toggle></p>
 				<p class="cinfo rgb" data-hide="true"></p>
 				<p class="cinfo hsl" data-hide="true"></p>
@@ -56,6 +56,7 @@
 				<a href="#bottom"><button id="btnBOTTOM">BOTTOM</button></a>
 			</div>
 		</div>
+		<script src="./js/colorSel.js" charset="utf-8"></script>
 		<script src="./js/submit.js" charset="utf-8"></script>
 		<script src="./js/styles.js" charset="utf-8"></script>
 		<script src="./js/colorMode.js" charset="utf-8"></script>
