@@ -1,4 +1,4 @@
-# color-clipmarks-v0.70
+# color-clipmarks-v0.80
 
 Color Clipmarks is a tool to help you quickly copy, paste, and preview a list of color codes in a single window. (supports Hex, RGB, and HSL formats)
 
