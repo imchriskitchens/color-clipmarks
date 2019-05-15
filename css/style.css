@@ -1,10 +1,18 @@
 :root {
-    --accent: #00ffac90;
+    --bg: #1b1b1b;
+    --c29: #292929;
+    --c81: #818181;
+    --cf1: #f1f1f1;
+    --black50: rgba(0, 0, 0, 0.5);
+    --highlight: #00ffac;
+    --borderRadius: 5px;
+    --highlight2: #00ffac90;
     --glow: rgba(0, 255, 172, 0.05);
+    --boxShadow: 10px 2px 15px #01010130;
 }
 
 body {
-    font-family: Arial;
+    font-family: Helvetica;
 }
 
 #cclm-title {
@@ -16,26 +24,7 @@ body {
 #colorLabel,
 #colorLabelDiv,
 body {
-    background-color: #1b1b1b;
-}
-
-#colorLabelDiv {
-    position: sticky;
-    position: -webkit-sticky;
-    width: 85vw;
-    padding: 20px 0;
-    border-bottom: solid 1px #222;
-}
-
-#colorLabel {
-    color: #ccc;
-    font-size: 20px;
-    margin: 10px 0 20px;
-    padding: 15px;
-    border-style: solid;
-    border-width: 10px 20px;
-    border-color: #292929;
-    border-radius: 5px;
+    background-color: var(--bg);
 }
 
 #userInput {
@@ -45,7 +34,7 @@ body {
     margin-top: 50px;
     padding: 20px;
     clear: left;
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
 }
 
 #userInput,
@@ -61,22 +50,39 @@ button {
     width: 100px;
     height: 50px;
     font-size: 20px;
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
+}
+
+button:hover {
+    color: var(--highlight);
+    border-color: var(--highlight);
+}
+
+/* FIXME: HSLMode VIEW  */
+#colorContainer {
+    display: grid;
+    grid-auto-rows: minmax(150px, auto);
+    grid-gap: 40px;
 }
 
 .box {
-    --sizew: 240px;
-    --sizeh: 150px;
-    width: var(--sizew);
-    height: var(--sizeh);
-    border-radius: 5px;
-    margin: 10px;
-    float: left;
-    border-radius: 5px;
+    display: block;
+    text-align: center;
+    border-radius: var(--borderRadius);
+    box-shadow: 0 4px 8px 0 var(--black50), 0 6px 20px 0 var(--black50);
+    overflow: hidden;
 }
 
-#upperCase {
-    font-weight: 900;
+@media screen and (min-width: 820px) {
+    #colorContainer {
+        grid-template-columns: repeat(4, 0.25fr);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #colorContainer {
+        grid-template-columns: repeat(5, 0.25fr);
+    }
 }
 
 .btn-enabled {
@@ -87,31 +93,12 @@ button {
 
 .btn-disabled {
     color: #666;
-    background-color: #1b1b1b;
-    border-color: #1b1b1b;
+    background-color: var(--bg);
+    border-color: var(--bg);
 }
 
 .btn-highlight {
-    border-color: var(--accent);
-}
-
-#btnCLEAR:hover,
-#btnEXPORT:hover,
-#btnFTR:hover,
-#btnPALETTE:hover,
-#btnSELECT:hover,
-#btnSHARE:hover,
-#btnSUBMIT:hover,
-#btnTOP:hover,
-.material-icons:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-}
-/* IF BTN IS NOT DISABLED */
-#btnSORT:hover,
-#upperCase:hover {
-    color: var(--accent);
-    border-color: var(--accent);
+    border-color: var(--highlight);
 }
 
 .material-icons.md-18 {
@@ -136,16 +123,16 @@ button {
 
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px #444;
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
 }
 
 ::-webkit-scrollbar-thumb {
     background: #333;
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--accent);
+    background: var(--highlight);
 }
 
 ::-webkit-resizer {
@@ -168,12 +155,12 @@ button {
 
 .btn {
     font-size: 24px;
-    color: #818181;
+    color: var(--c81);
     background: #222;
     padding: 8px 16px;
     margin: 20px;
     border: solid 1px #333;
-    border-radius: 5px;
+    border-radius: var(--borderRadius);
     display: block;
     text-decoration: none;
     transition: 0.3s;
@@ -181,8 +168,9 @@ button {
 }
 
 .btn:hover {
-    color: #f1f1f1;
+    color: var(--cf1);
 }
+
 @media screen and (min-width: 701px) {
     body {
         margin-bottom: 150px;
@@ -210,7 +198,7 @@ button {
 
     .not-sticky {
         margin-top: 100px;
-        border-radius: 10px;
+        border-radius: var(--borderRadius);
         padding: 0 20px;
     }
 
@@ -239,6 +227,7 @@ button {
         width: 80px;
     }
 }
+
 @media screen and (max-width: 700px) {
     #cclm-title {
         margin: 50px 15% 20px;
@@ -265,23 +254,27 @@ button {
     .footer {
         margin: 0 5% 0 10%;
     }
+
+    .footer-right {
+        display: none !important;
+    }
 }
+
 @media screen and (min-width: 600px) {
     button {
         margin: 50px 50px 20px 0;
     }
 }
 
-.cinfo {
-    font-size: 22px;
-    font-family: Arial;
-    /* text-transform: uppercase;*/
+.box p {
+    font-size: 20px;
+    font-family: Helvetica;
     text-align: center;
-    background: #05050590;
+    background: rgba(0, 0, 0, 0.65);
     color: white;
     padding: 10px 0;
     position: relative;
-    top: calc(150px - 65px);
+    top: 87px;
 }
 
 [data-hide] {
@@ -299,8 +292,9 @@ button {
 
 [highlight],
 [mode-active] {
-    border-color: var(--accent);
+    border-color: var(--highlight);
 }
+
 @media screen and (min-width: 701px) {
     .sticky-footer {
         position: fixed;
@@ -312,13 +306,13 @@ button {
 
     .not-sticky {
         margin-top: 100px;
-        border-radius: 10px;
+        border-radius: var(--borderRadius);
         padding: 0 20px;
     }
 
     [sticky-toggle] {
         margin-top: 100px;
-        border-radius: 10px;
+        border-radius: var(--borderRadius);
         padding: 0 20px;
     }
 
