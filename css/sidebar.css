@@ -1,11 +1,11 @@
-.sidebar {
+[tgl3] {
     height: 100vh;
     width: 0;
     position: fixed;
     z-index: 0;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: var(--c1);
     overflow-x: hidden;
 }
 
@@ -15,18 +15,19 @@
     position: fixed;
     z-index: 0;
     top: 0;
-    background-color: #111;
+    background-color: var(--c1);
+    box-shadow: var(--boxShadow);
 }
 
-#circleTab {
+#menu-tab {
     position: fixed;
     --size: 50px;
     width: var(--size);
     height: var(--size);
     border-radius: 50%;
     font-size: 16px;
-    background-color: #111;
-    color: #f1f1f2;
+    background-color: var(--c1);
+    color: var(--cf1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,10 +37,14 @@
     cursor: pointer;
 }
 
+#menu-tab:hover {
+    color: var(--highlight);
+}
+
 .openbtn {
     font-size: 20px;
     cursor: pointer;
-    background-color: #111;
+    background-color: var(--c1);
     color: white;
     padding: 10px 15px;
     border: none;
@@ -47,15 +52,17 @@
 }
 
 .openbtn:hover {
-    background-color: #444;
+    background-color: var(--c1);
 }
+
 @media screen and (min-width: 701px) {
-    .sidebar {
+    [tgl3] {
         width: 100%;
     }
 }
+
 @media screen and (max-width: 700px) {
-    .sidebar {
+    [tgl3] {
         padding-top: 0;
         padding-bottom: 0;
         width: 100%;
@@ -63,7 +70,7 @@
         z-index: 9;
     }
 
-    .sidebar .btn {
+    [tgl3] .btn {
         float: left;
     }
 
@@ -73,14 +80,14 @@
         z-index: 9;
     }
 
-    #circleTab {
+    #menu-tab {
         padding: 10px;
         top: -15px;
     }
 }
 
 [bdmar2] {
-    margin-left: 5%;
+    margin-left: 10%;
 }
 
 [tgl1] {
@@ -107,17 +114,10 @@
     width: 120px;
 }
 
-[mar2] {
-    /* margin: 20px 15%; */
-}
-
-[tgl5] {
-    top: 0;
-}
-
 [top2] {
     top: 70px;
 }
+
 @media screen and (max-width: 700px) {
     [bdmar2] {
         margin: 0;
@@ -154,6 +154,7 @@
         top: 70px;
     }
 }
+
 @media screen and (min-width: 701px) {
     [top2] {
         top: 0;
