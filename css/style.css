@@ -21,8 +21,6 @@ body {
     margin: 50px 10%;
 }
 
-#colorLabel,
-#colorLabelDiv,
 body {
     background-color: var(--bg);
 }
@@ -176,10 +174,6 @@ button:hover {
         margin-bottom: 150px;
     }
 
-    #colorLabel {
-        width: 50vw;
-    }
-
     #userInput {
         width: 60vw;
     }
@@ -231,10 +225,6 @@ button:hover {
 @media screen and (max-width: 700px) {
     #cclm-title {
         margin: 50px 15% 20px;
-    }
-
-    #colorLabel {
-        width: 68vw;
     }
 
     #userInput {
