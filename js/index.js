@@ -115,10 +115,8 @@ const clearAll = () => userInput.value = colorContainer.innerHTML = '';
 // -------------------------------------------------------------- SORT
 function srt(data) {
     data = (typeof data === 'string') ? data.split('\n') : data;
-    let unique = {};
-    data.forEach(function(i) { if (!unique[i]) unique[i] = true; });
-    data = Object.keys(unique).sort();
-    return data.join(`\n`).trim();
+    let unique = [...new Set(data)].sort();
+    return unique.join(`\n`).trim();
 }
 
 function sortAll() {
