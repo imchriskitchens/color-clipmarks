@@ -29,8 +29,8 @@ const setDefault = () => {
     let num = radios.length;
     radios.forEach(item => {
         if (item.checked === false) num--;
-        if (num === 0) radios[0].click();
         else radios[num].click();
+        if (num === 0) radios[0].click();
     });
 }
 setDefault();
