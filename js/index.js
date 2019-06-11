@@ -24,15 +24,8 @@ radios.forEach(option => {
     });
 });
 
-// initialize radio button selection and color format
-const setDefault = () => {
-    let num = radios.length;
-    radios.forEach(item => {
-        if (item.checked === false) num--;
-        else radios[num].click();
-        if (num === 0) radios[0].click();
-    });
-}
+// Color formats default to user input values (neutral)
+const setDefault = () => radios[0].click();
 setDefault();
 
 const sendToClipboard = (str) => {
@@ -105,7 +98,7 @@ function submit() {
             boxID++;
         }
     });
-    // NOTE: Required to update "boxes" and sync color format selection
+    // NOTE: Required to update "boxes" and reset color format selection
     updateBoxes();
     setDefault();
 }
