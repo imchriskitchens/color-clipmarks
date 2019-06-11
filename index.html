@@ -2,59 +2,34 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8">
-		<title>color clipmarks</title>
+		<title>color-clipmarks</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" href="./css/style.css">
-		<link rel="stylesheet" href="./css/sidebar.css">
 	</head>
-	<body tgl0>
-		<div id="TOP"></div>
-		<div id="sideBorder" tgl1>
-			<div id="menu-tab" onclick="toggleNav()" tgl2>
-				<h3>&#9776;</h3>
-			</div>
-		</div>
-		<div id="mySidebar" onmouseup="toggleNav()" tgl3>
-			<div class="btns">
-				<button id="btnSORT" class="btn" onclick='sortAll()'>
-					<i class="material-icons md-24">sort_by_alpha</i>
-				</button>
-				<button id="upperCase" class="btn" onclick="toggleCase()" case-toggle>
-					<i class="material-icons md-24">text_format</i>
-				</button>
-				<button id="btnEXPORT" class="btn">
-					<i class="material-icons md-24">save_alt</i>
-				</button>
-			</div>
-		</div>
-		<h1 id='cclm-title' tgl4>color clipmarks</h1>
+	<body>
 		<template id="template">
-			<div class="box" onmousedown='colorSel(mode(this.id))'>
-				<p data-hex case-toggle></p>
-				<p data-rgb data-hide="true"></p>
-				<p data-hsl data-hide="true"></p>
+			<div id="" class="box" onmousedown="copyColor(this.id)">
+				<p data-default hidden></p>
+				<p data-hex data-case hidden></p>
+				<p data-rgb hidden></p>
+				<p data-hsl hidden></p>
 			</div>
 		</template>
-		<div id="main" tgl4>
+		<main>
+			<h1>color-clipmarks</h1>
 			<div id="colorContainer"></div>
-			<textarea id="userInput"></textarea>
-			<div>
-				<button id="btnSUBMIT" onclick="submit()">submit</button>
-				<button id="btnCLEAR" onclick="clearAll()">clear</button>
-				<button id="btnSELECT" onclick="userInput.select()">selectall</button>
+			<div id="inputContainer">
+				<textarea id="userInput"></textarea>
+				<button type="button" onclick="submit()">submit</button>
 			</div>
-		</div>
-		<div id="FTR" class="footer sticky-footer" sticky-toggle sticky-active="true">
-			<button id="btnHEX" onclick="hexMode()" mode-toggle mode-active="true">HEX</button>
-			<button id="btnRGB" onclick="rgbMode()" mode-toggle>RGB</button>
-			<button id="btnHSL" onclick="hslMode()" mode-toggle>HSL</button>
-			<div class='footer-right'>
-				<a href="#BOTTOM"><button>BOTTOM</button></a>
-				<a href="#TOP"><button id="btnTOP">TOP</button></a>
-			</div>
-		</div>
-		<div id="BOTTOM"></div>
+		</main>
+		<footer class="footer sticky-footer">
+			<label for="default"><input type="radio" name="format" id="default" value="default">DEF</label>
+			<label for="hex"><input type="radio" name="format" id="hex" value="hex">HEX</label>
+			<label for="rgb"><input type="radio" name="format" id="rgb" value="rgb">RGB</label>
+			<label for="hsl"><input type="radio" name="format" id="hsl" value="hsl">HSL</label>
+		</footer>
+		<script src="./js/conversions.js" charset="utf-8"></script>
 		<script src="./js/index.js" charset="utf-8"></script>
 	</body>
 </html>
