@@ -38,7 +38,6 @@ const sendToClipboard = (str) => {
     const selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
     el.select();
     document.execCommand('copy');
-    alert(`copied "${el.value}"`);
     document.body.removeChild(el);
     if (selected) {
         document.getSelection().removeAllRanges();
