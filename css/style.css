@@ -1,14 +1,24 @@
 :root {
+    --bg: #1b1b1b;
     --highlight: hsl(187, 100%, 42%);
 }
 
 body {
-    background: #1b1b1b;
+    background: var(--bg);
     margin: 50px 10%;
 }
 
 footer {
     margin-top: 50px;
+}
+
+.sticky-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 0 50px 5px 50px;
+    background: var(--bg);
 }
 
 [hidden] {
