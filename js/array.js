@@ -10,4 +10,4 @@ const defaultList = () => {
 defaultList();
 submit();
 userInput.rows = 10;
-() => boxes = document.querySelectorAll('.box');
+updateBoxes();
