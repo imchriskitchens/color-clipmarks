@@ -46,4 +46,4 @@ function submitJSON() {
     userInput.rows = (boxID < 20) ? (boxID + 1) : 20;
     return boxes = document.querySelectorAll('.box');
 }
-submitJSON();
+// submitJSON();
