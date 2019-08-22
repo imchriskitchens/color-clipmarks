@@ -15,8 +15,8 @@
 				<p data-hsl hidden></p>
 			</div>
 		</template>
+		<h1>color-clipmarks</h1>
 		<main>
-			<h1>color-clipmarks</h1>
 			<div id="colorContainer"></div>
 			<div id="inputContainer">
 				<textarea id="userInput"></textarea>
@@ -24,10 +24,10 @@
 			</div>
 		</main>
 		<footer class="footer sticky-footer">
-			<label for="default"><input type="radio" name="format" id="default" value="default">DEF</label>
-			<label for="hex"><input type="radio" name="format" id="hex" value="hex">HEX</label>
-			<label for="rgb"><input type="radio" name="format" id="rgb" value="rgb">RGB</label>
-			<label for="hsl"><input type="radio" name="format" id="hsl" value="hsl">HSL</label>
+			<label for="default"><input type="radio" name="format" id="default" value="default" onchange="setMode(event.target.value)">Default</label>
+			<label for="hex"><input type="radio" name="format" id="hex" value="hex" onchange="setMode(event.target.value)">HEX</label>
+			<label for="rgb"><input type="radio" name="format" id="rgb" value="rgb" onchange="setMode(event.target.value)">RGB</label>
+			<label for="hsl"><input type="radio" name="format" id="hsl" value="hsl" onchange="setMode(event.target.value)">HSL</label>
 		</footer>
 		<script src="./js/conversions.js" charset="utf-8"></script>
 		<script src="./js/index.js" charset="utf-8"></script>
