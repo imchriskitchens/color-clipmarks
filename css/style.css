@@ -1,36 +1,183 @@
-:root {
-    --bg: #1b1b1b;
-    --highlight: hsl(187, 100%, 42%);
-}
-
 body {
-    background: var(--bg);
-    margin: 50px 10%;
-}
-
-footer {
-    margin-top: 50px;
-}
-
-.sticky-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    padding: 0 50px 5px 50px;
-    background: var(--bg);
-}
-
-[hidden] {
-    display: none !important;
+  margin: 0;
+  background: hsl(235, 24%, 9%);
 }
 
 h1 {
-    color: hsl(0, 0%, 21%);
+  margin: 0;
+  padding: 20px 40px;
+  color: hsl(235, 24%, 56%);
+  background-color: hsl(235, 24%, 8%);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+  font-weight: 400;
+}
+
+main {
+  margin: 50px 10%;
+}
+
+footer {
+  margin-top: 50px;
+}
+
+.sticky-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0 50px 5px 50px;
+  background: hsl(235, 24%, 9%);
+}
+
+[hidden] {
+  display: none !important;
 }
 
 label {
-    color: #eee;
+  color: #eee;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  --size: 24px;
+  width: var(--size);
+  height: var(--size);
+  border: 2px solid #999;
+  transition: 0.3s all linear;
+  margin-right: 10px;
+  position: relative;
+  top: 4px;
+}
+
+input[type="radio"]:checked {
+  border: 8px solid hsl(235, 24%, 56%);
+}
+
+#colorContainer,
+#inputContainer {
+  display: grid;
+  grid-auto-rows: minmax(150px, auto);
+  grid-gap: 40px;
+}
+
+.box {
+  display: block;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.35), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.box p {
+  font-size: 20px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  padding: 10px 0;
+  position: relative;
+  top: 87px;
+}
+
+#userInput {
+  font-size: 18px;
+  line-height: 1.6;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 50px;
+}
+
+button,
+#userInput {
+  color: #ccc;
+  background-color: hsl(235, 14%, 13%);
+  border: solid 1px hsl(235, 14%, 15%);
+}
+
+button {
+  height: 60px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+#inputContainer button {
+  margin-top: 20px;
+}
+
+button:hover {
+  color: hsl(235, 24%, 56%);
+  background: hsl(235, 18%, 10%);
+  border-color: hsl(235, 24%, 56%);
+}
+
+.pulse {
+  animation: pulse 200ms ease-in-out 2 alternate;
+}
+
+.pulse p {
+  color: hsla(217, 89%, 66%, 1);
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.2);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #colorContainer {
+    grid-template-columns: repeat(4, 0.25fr);
+  }
+
+  #inputContainer {
+    grid-template-columns: repeat(1, 0.5fr);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #colorContainer {
+    grid-template-columns: repeat(5, 0.20fr);
+  }
+
+  #inputContainer {
+    grid-template-columns: repeat(1, 0.38fr);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  background: hsl(235, 18%, 15%);
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  height: 100%;
+  background: hsl(235, 18%, 15%);
+  box-shadow: inset 0 0 5px #444;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: hsl(235, 24%, 8%);
+  border: solid 1px hsl(235, 18%, 20%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(235, 24%, 56%);
+}
+
+::-webkit-resizer {
+  background: #333;
+}
+
+::-webkit-scrollbar-corner {
+  background: #333;
 }
 
 input[type="radio"] {
