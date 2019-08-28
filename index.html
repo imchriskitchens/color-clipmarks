@@ -18,9 +18,14 @@
 		<h1>color-clipmarks</h1>
 		<main>
 			<div id="colorContainer"></div>
-			<div id="inputContainer">
-				<textarea id="userInput"></textarea>
-				<button type="button" onclick="submit()">submit</button>
+			<div id="utilContainer">
+				<textarea id="userInput" spellcheck="false"></textarea>
+				<button id="submitBtn" type="button" onclick="submit()">submit</button>
+				<button id="sortAll" class="sortBtns" type="button" onclick="sortAll('default')">sortAll</button>
+				<button id="listToRGB" class="sortBtns" type="button" onclick="listToFormat('rgb')">listToRGB</button>
+				<button id="listToHEX" class="sortBtns" type="button" onclick="listToFormat('hex')">listToHEX</button>
+				<button id="listToHSL" class="sortBtns" type="button" onclick="listToFormat('hsl')">listToHSL</button>
+				<input id="myfiles" type="file">
 			</div>
 		</main>
 		<footer class="footer sticky-footer">
@@ -33,5 +38,7 @@
 		<script src="./js/index.js" charset="utf-8"></script>
 		<script src="./js/palette.js" charset="utf-8"></script>
 		<script src="./js/array.js" charset="utf-8"></script>
+		<script src="./js/file-upload.js" charset="utf-8"></script>
+		<script src="./js/sort.js" charset="utf-8"></script>
 	</body>
 </html>

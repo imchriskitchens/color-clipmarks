@@ -1,4 +1,4 @@
-# color-clipmarks-v0.92
+# color-clipmarks-v0.95
 
 ![color-clipmarks-screenshot](./src/color-clipmarks-v0_92.png)
 
