@@ -18,14 +18,14 @@ const sendToClipboard = (str) => {
   const body = document.body;
   const el = document.createElement('textarea');
   el.value = str;
-  el.setAttribute('readonly', '');
+  el.setAttribute('readonly', "");
   el.style.position = 'absolute';
   el.style.left = '-9999px';
-  body.appendChild(el);
+  document.body.appendChild(el);
   const selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
   el.select();
   document.execCommand('copy');
-  body.removeChild(el);
+  document.body.removeChild(el);
   if (selected) {
     document.getSelection().removeAllRanges();
     document.getSelection().addRange(selected);
@@ -70,11 +70,11 @@ const conversions = (color) => {
 function submit() {
   let boxID = 0;
   radios[0].checked = true;
-  colorContainer.textContent = '';
+  colorContainer.textContent = "";
 
   const colors = userInput.value.trim().split(`\n`);
   colors.forEach(color => {
-    if (color !== '') {
+    if (color !== "") {
       const instance = document.importNode(fragment.content, true);
       const { formatDEF, formatRGB, formatHEX, formatHSL } = conversions(color);
       instance.querySelector('.box').id = `box${boxID}`;
@@ -88,3 +88,7 @@ function submit() {
     }
   });
 }
+
+
+
+//

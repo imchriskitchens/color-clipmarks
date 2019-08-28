@@ -1,157 +1,81 @@
-function hexToRGB(hex) {
-  hex = +`0x${hex.replace("#",'')}`;
-  let r = (hex >> 16) & 255,
-    g = (hex >> 8) & 255,
-    b = hex & 255;
-  return `rgb(${r}, ${g}, ${b})`;
-}
+const to16 = (n) => parseInt(n, 10).toString(16);
+const expand = (n) => (n.length === 1) ? `0${n}` : n;
 
-function hexToHSL(hex) {
-  hex = +`0x${hex.replace("#",'')}`;
-  let r = (hex >> 16) & 255,
-    g = (hex >> 8) & 255,
-    b = hex & 255;
-  (r /= 255), (g /= 255), (b /= 255);
-  let cmin = Math.min(r, g, b),
-    cmax = Math.max(r, g, b),
-    c = cmax - cmin;
-  let h = (s = l = 0);
-  if (c == 0) h = 0;
-  else if (cmax == r) h = ((g - b) / c) % 6;
-  else if (cmax == g) h = (b - r) / c + 2;
-  else h = (r - g) / c + 4;
-  h = Math.round(h * 60);
-  if (h < 0) h += 360;
-  l = (cmax + cmin) / 2;
-  s = c == 0 ? 0 : c / (1 - Math.abs(2 * l - 1));
-  s = +(s * 100).toFixed(0);
-  l = +(l * 100).toFixed(0);
-  return `hsl(${h}, ${s}%, ${l}%)`;
-}
+const digits = (str) => str.match(/\d+/g);
+const minMax = (r, g, b) => [Math.min(r, g, b), Math.max(r, g, b)];
 
-function rgbToHEX(rgb) {
-  rgb = rgb.match(/\d+/g);
-  let r = parseInt(rgb[0], 10).toString(16),
-    g = parseInt(rgb[1], 10).toString(16),
-    b = parseInt(rgb[2], 10).toString(16);
-  r = r.length === 1 ? `0${r}` : r;
-  g = g.length === 1 ? `0${g}` : g;
-  b = b.length === 1 ? `0${b}` : b;
+const rgbToHEX = (rgb) => {
+  let [r, g, b] = digits(rgb);
+  [r, g, b] = [r, g, b].map(to16);
+  [r, g, b] = [r, g, b].map(expand);
   return `#${r}${g}${b}`;
 }
 
-function rgbToHSL(rgb) {
-  rgb = rgb.match(/\d+/g);
-  let r = rgb[0],
-    g = rgb[1],
-    b = rgb[2];
-  (r /= 255), (g /= 255), (b /= 255);
-  let cmax = Math.max(r, g, b),
-    cmin = Math.min(r, g, b),
-    c = cmax - cmin;
-  let h = s = l = 0;
-  switch (cmax) {
-    case r:
-      h = ((g - b) / c) % 6;
-      break;
-    case g:
-      h = (b - r) / c + 2;
-      break;
-    case b:
-      h = (r - g) / c + 4;
-      break;
-  }
-  h = Math.round(h * 60);
-  h = (h < 0) ? h + 360 : h;
-  l = (cmax + cmin) / 2;
-  s = c === 0 ? 0 : c / (1 - Math.abs(2 * l - 1));
-  s *= 100;
-  l *= 100;
-  let result = `hsl(${ Math.trunc(h)}, ${ Math.trunc(s)}%, ${ Math.trunc(l)}%)`;
-  return result;
+const rgbToHSL = (rgb) => {
+  let [r, g, b] = digits(rgb).map((n) => n / 255);
+  let [min, max] = minMax(r, g, b);
+  let [hue, sat, lit, c] = Array(4).fill(0);
+
+  lit = (max + min) / 2;
+  c = max - min;
+
+  if (c !== 0) hue = (max === r) ? ((g - b) / c) % 6 :
+    (max === g) ? (b - r) / c + 2 :
+    (r - g) / c + 4; //(max === b)
+
+  hue *= 60;
+  if (hue < 0) hue += 360;
+  if (c !== 0) sat = (c) / (1 - Math.abs(max + min - 1));
+  sat *= 100;
+  lit *= 100;
+
+  [hue, sat, lit] = [hue, sat, lit].map((n) => parseInt(n));
+  return `hsl(${hue}, ${sat}%, ${lit}%)`;
 }
 
-function hslToRGB(hsl) {
-  hsl = hsl.replace(/%/g, "").match(/\w+/g);
-  h = hsl[1];
-  s = hsl[2] / 100;
-  l = hsl[3] / 100;
-  let c = (1 - Math.abs(2 * l - 1)) * s,
-    x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
-    m = l - c / 2,
-    r = 0,
-    g = 0,
-    b = 0;
-  if (0 <= h && h < 60) {
-    r = c;
-    g = x;
-    b = 0;
-  } else if (60 <= h && h < 120) {
-    r = x;
-    g = c;
-    b = 0;
-  } else if (120 <= h && h < 180) {
-    r = 0;
-    g = c;
-    b = x;
-  } else if (180 <= h && h < 240) {
-    r = 0;
-    g = x;
-    b = c;
-  } else if (240 <= h && h < 300) {
-    r = x;
-    g = 0;
-    b = c;
-  } else if (300 <= h && h < 360) {
-    r = c;
-    g = 0;
-    b = x;
-  }
-  r = Math.round(Math.abs((r + m) * 255));
-  g = Math.round(Math.abs((g + m) * 255));
-  b = Math.round(Math.abs((b + m) * 255));
+const hexToRGB = (hex) => {
+  hex = +`0x${hex.replace("#", "")}`;
+  let [r, g, b] = [(hex >> 16), (hex >> 8), hex].map((n) => n & 255);
   return `rgb(${r}, ${g}, ${b})`;
+}
+
+const hexToHSL = (hex) => {
+  hex = hexToRGB(hex);
+  return rgbToHSL(hex);
 }
 
 function hslToHEX(hsl) {
-  hsl = hsl.replace(/%/g, "").match(/\w+/g);
-  h = hsl[1];
-  s = hsl[2] / 100;
-  l = hsl[3] / 100;
-  let c = (1 - Math.abs(2 * l - 1)) * s,
-    x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
-    m = l - c / 2,
-    r = g = b = 0;
-  if (0 <= h && h < 60) {
-    r = c;
-    g = x;
-    b = 0;
-  } else if (60 <= h && h < 120) {
-    r = x;
-    g = c;
-    b = 0;
-  } else if (120 <= h && h < 180) {
-    r = 0;
-    g = c;
-    b = x;
-  } else if (180 <= h && h < 240) {
-    r = 0;
-    g = x;
-    b = c;
-  } else if (240 <= h && h < 300) {
-    r = x;
-    g = 0;
-    b = c;
-  } else if (300 <= h && h < 360) {
-    r = c;
-    g = 0;
-    b = x;
-  }
+  let [h, s, l] = digits(hsl);
+  s /= 100;
+  l /= 100;
+
+  let [c, x, m, r, g, b] = Array(6).fill(0);
+  c = (1 - Math.abs(2 * l - 1)) * s;
+  x = c * (1 - Math.abs((h / 60) % 2 - 1));
+  m = l - c / 2;
+
+  if (0 <= h && h < 60)
+    [r, g, b] = [c, x, 0];
+  else if (60 <= h && h < 120)
+    [r, g, b] = [x, c, 0];
+  else if (120 <= h && h < 180)
+    [r, g, b] = [0, c, x];
+  else if (180 <= h && h < 240)
+    [r, g, b] = [0, x, c];
+  else if (240 <= h && h < 300)
+    [r, g, b] = [x, 0, c];
+  else if (300 <= h && h < 360)
+    [r, g, b] = [c, 0, x];
+
   r = Math.round((r + m) * 255).toString(16);
   g = Math.round((g + m) * 255).toString(16);
   b = Math.round((b + m) * 255).toString(16);
-  if (r.length == 1) r = `0${r}`;
-  if (g.length == 1) g = `0${g}`;
-  if (b.length == 1) b = `0${b}`;
+
+  [r, g, b] = [r, g, b].map(expand);
   return `#${r}${g}${b}`;
+}
+
+const hslToRGB = (hsl) => {
+  let hex = hslToHEX(hsl);
+  return hexToRGB(hex);
 }
