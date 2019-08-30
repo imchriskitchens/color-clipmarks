@@ -8,11 +8,12 @@ const contentFilter = (content) => {
 
   const lines = content.replace(/[:;"']/g, "").trim().split(`\n`);
   lines.forEach(line => {
-    let segment = "";
-    testArray.forEach(([item, isValid] = flag) => {
-      segment = line.replace(item, `\n${item}`).split(/\n/)[1];
-      segment = segment.replace(/([,]\s+)/g, ",").split(/\s+/g)[0];
-      if (isValid.test(segment)) updateList(segment.match(isValid)[0]);
+    testArray.forEach(([flag, isValid] = item) => {
+      if (line.includes(flag)) {
+        let segment = line.replace(flag, `\n${flag}`).split("\n")[1];
+        segment = segment.replace(/([,]\s+)/g, ",").split(/\s+/g)[0];
+        if (isValid.test(segment)) updateList(segment.match(isValid)[0]);
+      }
     });
   });
   submit();
