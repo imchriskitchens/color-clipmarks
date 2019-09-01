@@ -54,18 +54,15 @@ function hslToHEX(hsl) {
   x = c * (1 - Math.abs((h / 60) % 2 - 1));
   m = l - c / 2;
 
-  if (0 <= h && h < 60)
-    [r, g, b] = [c, x, 0];
-  else if (60 <= h && h < 120)
-    [r, g, b] = [x, c, 0];
-  else if (120 <= h && h < 180)
-    [r, g, b] = [0, c, x];
-  else if (180 <= h && h < 240)
-    [r, g, b] = [0, x, c];
-  else if (240 <= h && h < 300)
-    [r, g, b] = [x, 0, c];
-  else if (300 <= h && h < 360)
-    [r, g, b] = [c, 0, x];
+  const sixty = (h) => Math.floor(h / 60);
+
+  [r, g, b] =
+  (sixty(h) == 0) ? [c, x, 0] :
+  (sixty(h) == 1) ? [x, c, 0] :
+  (sixty(h) == 2) ? [0, c, x] :
+  (sixty(h) == 3) ? [0, x, c] :
+  (sixty(h) == 4) ? [x, 0, c] :
+  (sixty(h) == 5) ? [c, 0, x] : [r, g, b];
 
   r = Math.round((r + m) * 255).toString(16);
   g = Math.round((g + m) * 255).toString(16);
