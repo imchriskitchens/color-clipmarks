@@ -6,10 +6,11 @@ const contentFilter = (content) => {
 
   const updateList = (val) => userInput.value += `${val}\n`;
 
-  const lines = content.replace(/[:;"',]/g, "").trim().split(`\n`);
+  const lines = content.replace(/[:;"']/g, "").trim().split(`\n`);
   lines.forEach(line => {
     testArray.forEach(([flag, isValid] = item) => {
       if (line.includes(flag)) {
+        line = (flag === "#") ? line.replace(",", " ") : line;
         let segment = line.replace(flag, `\n${flag}`).split("\n")[1];
         segment = segment.replace(/([,]\s+)/g, ",").split(/\s+/g)[0];
         if (isValid.test(segment)) updateList(segment.match(isValid)[0]);
