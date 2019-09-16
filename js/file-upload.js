@@ -6,7 +6,7 @@ const contentFilter = (content) => {
 
   const updateList = (val) => userInput.value += `${val}\n`;
 
-  const lines = content.replace(/[:;"']/g, "").trim().split(`\n`);
+  const lines = content.replace(/[:;"',]/g, "").trim().split(`\n`);
   lines.forEach(line => {
     testArray.forEach(([flag, isValid] = item) => {
       if (line.includes(flag)) {
