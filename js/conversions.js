@@ -57,7 +57,7 @@ function hslToHEX(hsl) {
   const sixty = (h) => Math.floor(h / 60);
 
   [r, g, b] =
-  (sixty(h) == 0) ? [c, x, 0] :
+  (sixty(h) == (0 | 6)) ? [c, x, 0] :
   (sixty(h) == 1) ? [x, c, 0] :
   (sixty(h) == 2) ? [0, c, x] :
   (sixty(h) == 3) ? [0, x, c] :
