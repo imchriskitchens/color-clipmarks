@@ -2,43 +2,57 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8">
-		<title>color-clipmarks</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>color-clipmarks</title>
 		<link rel="stylesheet" href="./css/style.css">
 	</head>
 	<body>
 		<template id="template">
-			<div id="" class="box" onclick="copyColor(this.id)">
-				<p data-default></p>
-				<p data-hex data-case hidden></p>
-				<p data-rgb hidden></p>
-				<p data-hsl hidden></p>
+			<div class="box">
+				<p data-user=""></p>
+				<p data-hex="" hidden="true"></p>
+				<p data-rgb="" hidden="true"></p>
+				<p data-hsl="" hidden="true"></p>
 			</div>
 		</template>
 		<h1>color-clipmarks</h1>
 		<main>
 			<div id="colorContainer"></div>
 			<div id="utilContainer">
+				<label id="listFormatLabel" for="listFormat">Color List Format<select id="listFormat" name="listFormat">
+						<option value="userMode" selected="selected">User</option>
+						<option value="rgbMode">RGB</option>
+						<option value="hexMode">HEX</option>
+						<option value="hslMode">HSL</option>
+					</select>
+				</label>
 				<textarea id="userInput" spellcheck="false"></textarea>
-				<button id="submitBtn" type="button" onclick="submit()">submit</button>
-				<button id="sortAll" class="sortBtns" type="button" onclick="sortAll('default')">sortAll</button>
-				<button id="listToRGB" class="sortBtns" type="button" onclick="listToFormat('rgb')">listToRGB</button>
-				<button id="listToHEX" class="sortBtns" type="button" onclick="listToFormat('hex')">listToHEX</button>
-				<button id="listToHSL" class="sortBtns" type="button" onclick="listToFormat('hsl')">listToHSL</button>
-				<input id="myfiles" type="file">
+				<button id="submitBtn" type="button">submit</button>
+				<button id="selectBtn" type="button">select list</button>
+				<button id="sortBtn" type="button">sort colors</button>
+				<input id="fileUpload" type="file" style="display:none">
+				<button id="importList" type="button">import</button>
+				<button id="exportList" type="button">export</button>
 			</div>
 		</main>
-		<footer class="footer sticky-footer">
-			<label for="default"><input type="radio" name="format" id="default" value="default" onchange="setMode(event.target.value)">Default</label>
-			<label for="hex"><input type="radio" name="format" id="hex" value="hex" onchange="setMode(event.target.value)">HEX</label>
-			<label for="rgb"><input type="radio" name="format" id="rgb" value="rgb" onchange="setMode(event.target.value)">RGB</label>
-			<label for="hsl"><input type="radio" name="format" id="hsl" value="hsl" onchange="setMode(event.target.value)">HSL</label>
+		<footer id="footer" class="sticky-footer">
+			<label for="userMode">
+				<input id="userMode" type="radio" name="format" value="user">User</label>
+			<label for="hexMode">
+				<input id="hexMode" type="radio" name="format" value="hex">HEX</label>
+			<label for="rgbMode">
+				<input id="rgbMode" type="radio" name="format" value="rgb">RGB</label>
+			<label for="hslMode">
+				<input id="hslMode" type="radio" name="format" value="hsl">HSL</label>
 		</footer>
 		<script src="./js/conversions.js" charset="utf-8"></script>
 		<script src="./js/index.js" charset="utf-8"></script>
 		<script src="./js/palette.js" charset="utf-8"></script>
 		<script src="./js/array.js" charset="utf-8"></script>
-		<script src="./js/file-upload.js" charset="utf-8"></script>
+		<script src="./js/listFormat.js" charset="utf-8"></script>
 		<script src="./js/sort.js" charset="utf-8"></script>
+		<script src="./js/color-groups.js" charset="utf-8"></script>
+		<script src="./js/importList.js" charset="utf-8"></script>
+		<script src="./js/exportList.js" charset="utf-8"></script>
 	</body>
 </html>
