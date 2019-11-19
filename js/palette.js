@@ -199,7 +199,7 @@ const palettes = {
 }
 
 const submitJSON = (palette) => {
-  if (palette === "") return;
+  if(palette === "") return;
   let boxID = 0;
   userInput.value = colorContainer.innerHTML = '';
   palette.forEach(color => {
@@ -208,7 +208,7 @@ const submitJSON = (palette) => {
     boxID++;
   });
   userInput.rows = (boxID < 10) ? (boxID + 1) : 10;
-  submit();
+  app.submit();
 }
 
 // submitJSON(palettes.palette2);
