@@ -1,7 +1,7 @@
 const contentFilter = (content) => {
-  const isHEX = /(^#[a-f\d]{6}$)|(^#[a-f\d]{3}$)/i;
-  const isRGB = /rgb\((\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\)/i;
-  const isHSL = /hsl\((\d{1,3})\s*,\s*(\d{1,3}%)\s*,\s*(\d{1,3}%)\)/i;
+  const isHEX = /(#[0-9A-F]{6})|(#[0-9A-F]{3})/i;
+  const isRGB = /(rgb\((?:\d{1,3})\s*,\s*(?:\d{1,3})\s*,\s*(?:\d{1,3})\))/i;
+  const isHSL = /(hsl\((?:\d{1,3})\s*,\s*(?:\d{1,3}%)\s*,\s*(?:\d{1,3}%)\))/i;
 
   const formatTestObjs = [
     { flag: "#", isValid: isHEX },
@@ -26,23 +26,15 @@ const contentFilter = (content) => {
     }
   }
 
-  const lines = content.trim().split(`\n`);
+  const lines = content.trim()
+    .replace(/#/g, `\n#`)
+    .replace(/rgb/g, `\nrgb`)
+    .replace(/hsl/g, `\nhsl`).trim().split(`\n`);
 
   lines.forEach(line => {
     formatTestObjs.forEach(({ flag, isValid }) => {
-
-      if(line.includes(flag)) {
-        const segments = line
-          .replace(`;`, ``)
-          .replace(`)`, `)\n`)
-          .replace(flag, `\n${flag}`)
-          .split(`\n`);
-
-        ([...segments]).forEach(item => {
-          if(isValid.test(item))
-            listObj.store(item.match(isValid)[0]);
-        });
-      }
+      if(line.includes(flag) && isValid.test(line))
+        listObj.store(line.match(isValid)[0]);
     });
   });
 
@@ -65,6 +57,5 @@ importList.addEventListener("click", () => {
 }, false);
 
 fileUpload.addEventListener("change", (e) => {
-  // console.log(e.target.result);
   pullfiles();
 });
