@@ -10,19 +10,15 @@ const contentFilter = (content) => {
   ];
 
   const listObj = {
-    cleared: false,
     data: [],
-    store(value) {
-      return this.data.push(value);
-    },
-    clearList() {
-      userInput.value = "";
-      return this.cleared = true;
-    },
-    updateList() {
-      const result = this.data.join("\n");
-      userInput.value += (userInput.value === "") ? result : `\n${result}`;
-      app.submit();
+    store(value) { this.data.push(value); },
+    updateList({ append } = false) {
+      const result = this.data.filter(v => !!v);
+      if(result.length) {
+        const current = (append) ? `${userInput.value}\n` : "";
+        userInput.value = `${current}${result.join("\n")}`;
+        app.submit();
+      } else alert("No values found.");
     }
   }
 
@@ -38,7 +34,6 @@ const contentFilter = (content) => {
     });
   });
 
-  listObj.clearList();
   listObj.updateList();
 }
 
