@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<template id="template">
-			<div class="box">
+			<div class="swatch">
 				<p data-user=""></p>
 				<p data-hex="" hidden="true"></p>
 				<p data-rgb="" hidden="true"></p>
@@ -19,23 +19,26 @@
 		<main>
 			<div id="colorContainer"></div>
 			<div id="utilContainer">
-				<label id="listFormatLabel" for="listFormat">Color List Format<select id="listFormat" name="listFormat">
-						<option value="userMode" selected="selected">User</option>
-						<option value="rgbMode">RGB</option>
-						<option value="hexMode">HEX</option>
-						<option value="hslMode">HSL</option>
+				<label id="listFormatLabel" for="listFormat">List Format: <select id="listFormat" name="listFormat">
+						<option value="user" selected>User</option>
+						<option value="rgb">RGB</option>
+						<option value="hex">HEX</option>
+						<option value="hsl">HSL</option>
 					</select>
 				</label>
-				<textarea id="userInput" spellcheck="false"></textarea>
+				<textarea id="textarea" spellcheck="false"></textarea>
 				<button id="submitBtn" type="button">submit</button>
 				<button id="selectBtn" type="button">select list</button>
+				<button id="copyBtn" type="button">copy list</button>
 				<button id="sortBtn" type="button">sort colors</button>
-				<input id="fileUpload" type="file" style="display:none">
-				<button id="importList" type="button">import</button>
-				<button id="exportList" type="button">export</button>
+				<button id="removeDuplBtn" type="button">unique</button>
+				<input id="fileUpload" type="file">
+				<button id="importBtn" type="button">import</button>
+				<!-- <button id="exportBtn" type="button">export</button> -->
 			</div>
 		</main>
-		<footer id="footer" class="sticky-footer">
+		<footer id="footer">
+			<!-- TODO: collapse to menu button ( device width: 450px ) -->
 			<label for="userMode">
 				<input id="userMode" type="radio" name="format" value="user">User</label>
 			<label for="hexMode">
@@ -45,14 +48,6 @@
 			<label for="hslMode">
 				<input id="hslMode" type="radio" name="format" value="hsl">HSL</label>
 		</footer>
-		<script src="./js/conversions.js" charset="utf-8"></script>
 		<script src="./js/index.js" charset="utf-8"></script>
-		<script src="./js/palette.js" charset="utf-8"></script>
-		<script src="./js/array.js" charset="utf-8"></script>
-		<script src="./js/listFormat.js" charset="utf-8"></script>
-		<script src="./js/sort.js" charset="utf-8"></script>
-		<script src="./js/color-groups.js" charset="utf-8"></script>
-		<script src="./js/importList.js" charset="utf-8"></script>
-		<script src="./js/exportList.js" charset="utf-8"></script>
 	</body>
 </html>
