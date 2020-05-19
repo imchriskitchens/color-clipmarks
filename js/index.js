@@ -1,4 +1,3 @@
-// november17
 
 const radios = document.querySelectorAll('input[type="radio"]');
 
